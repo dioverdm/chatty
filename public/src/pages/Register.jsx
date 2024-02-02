@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../assets/logo.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { registerRoute } from "../utils/api-routes";
 
 function Register() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -13,22 +16,63 @@ function Register() {
     confirmPassword: "",
   });
 
-  const handleSubmit = (event) => {
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem('chat-app-user')) {
+      navigate('/');
+    }
+  }, []);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    handleValidation();
+    if (handleValidation()) {
+      const { password, username, email } = values;
+      const { data } = await axios.post(registerRoute, {
+        username,
+        email,
+        password,
+      });
+
+      if (data.status === false) {
+        toast.error(data.msg, toastOptions);
+      }
+
+      if (data.status === true) {
+        localStorage.setItem('chat-app-user', JSON.stringify(data.user));
+      }
+      navigate("/");
+    }
   };
 
   const handleValidation = () => {
     const { password, confirmPassword, username, email } = values;
     if (password !== confirmPassword) {
-      toast.error("Error: Passwords do not match.", {
-        position: "bottom-right",
-        autoClose: 8000,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "dark",
-      });
+      toast.error("Error: Passwords do not match.", toastOptions);
+      return false;
+    } else if (username.length < 3) {
+      toast.error(
+        "Error: Username should be greater than three characters.",
+        toastOptions
+      );
+      return false;
+    } else if (password.length < 8) {
+      toast.error(
+        "Error: Password should be at least eight characters.",
+        toastOptions
+      );
+      return false;
+    } else if (email === "") {
+      toast.error("Error: An email address is required.", toastOptions);
+      return false;
     }
+    return true;
   };
 
   const handleChange = (event) => {
@@ -69,7 +113,7 @@ function Register() {
           />
           <button type="submit">Create User</button>
           <span>
-            Already have an account? <Link to="/login">Log in here</Link>
+            Already have an account? <Link to="/login">Log in</Link>
           </span>
         </form>
       </FormContainer>
