@@ -1,3 +1,6 @@
+## EDIT FEB 4, 2024
+.env file removed.
+
 ## Running the project locally 
 - Clone the repository onto your local machine.
 - Make sure that you have Node.js installed. 
