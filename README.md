@@ -22,4 +22,4 @@
 
 The logo for this project was taken from Flaticon. 
 
-This project and its styles were largely based on the work of Kishan Sheth on YouTube. Thank you, Kishan! 
+The integration with Socket.io, the project structure and its styles were largely based on the work of Kishan Sheth on YouTube. Thank you, Kishan! 
