@@ -1,6 +1,13 @@
 ## EDIT FEB 4, 2024
 .env file removed.
 
+## Features 
+![Sample](./images/sample1.png)
+![Sample](./images/sample2.png)
+![Sample](./images/sample3.png)
+![Sample](./images/sample4.png)
+![Sample](./images/sample5.png)
+
 ## Running the project locally 
 - Clone the repository onto your local machine.
 - Make sure that you have Node.js installed. 
