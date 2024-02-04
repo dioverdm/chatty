@@ -1,6 +1,16 @@
 ## EDIT FEB 4, 2024
 .env file removed.
 
+## Description
+A real-time chat application built in MongoDB, Express, React, and Node.js, with Socket.io providing real-time communication between two client instances. I wanted to explore making some kind of messaging interface and was able to do so through this project. 
+
+## Features 
+![Sample](./images/sample1.png)
+![Sample](./images/sample2.png)
+![Sample](./images/sample3.png)
+![Sample](./images/sample4.png)
+![Sample](./images/sample5.png)
+
 ## Running the project locally 
 - Clone the repository onto your local machine.
 - Make sure that you have Node.js installed. 
@@ -8,7 +18,8 @@
 - Open an instance of the terminal.
 
 ## Important information 
-- In order to run the program, you will need to have both the client and server code running on separate instances of the terminal. Instructions on how to run the code are outlined below. 
+- In order to run the program, you will need to have both the client and server code running on separate instances of the terminal. Instructions on how to run the code are outlined below.
+- When running the program on two separate instances, you might have to refresh the page in order to let the most recent messages load in. 
 
 ## Running the client code
 - Navigate to the "client" folder.
