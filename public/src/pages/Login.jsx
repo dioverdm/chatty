@@ -52,7 +52,7 @@ export default function Login() {
       }
       if (data.status === true) {
         localStorage.setItem(
-          process.env.REACT_APP_LOCALHOST_KEY,
+          "usersdata",
           JSON.stringify(data.user)
         );
 
