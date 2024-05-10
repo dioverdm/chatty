@@ -10,9 +10,9 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
-console.log(process.env.MONGO_URL)
+console.log("Mongo Bien")
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect("mongodb+srv://insane:op5@cluster0.5qyw6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -26,7 +26,7 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-const server = app.listen(process.env.PORT, () =>
+const server = app.listen(3000, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
 const io = socket(server, {
